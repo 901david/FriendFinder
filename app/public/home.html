@@ -6,10 +6,25 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-	<script rel="javascript" type="text/javascript" src="script/app.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script rel="javascript" type="text/javascript" src="htmlRoutes.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Friend Finder</title>
 </head>
 <body>
+  <div class="container">
+    <div class="jumbotron">
+      <div class="col-lg-2">
+      <img src="../images/glassclash.png" alt="People"  class="img-responsive">
+      </div>
+      <p id="mainHeader">Fancy Friend Finder</p>
+      <hr/>
+        <p class="supportText">Answer a few basic questions.</p>
+        <p class="supportText">Then find the friend with the greatest compatibility!</p>
+        <div class="btn btn-primary" id="surveyButton"><span class="glyphicon glyphicon-th-list">   </span>Begin Survey
+        </div>
+    </div>
+    <a href="/api/friends">API Friends List</a><span> | </span>
+    <a href="https://github.com/901david/FriendFinder" alt="Github Repo">GitHub Repo</a>
+  </div>
 </body>
 </html>

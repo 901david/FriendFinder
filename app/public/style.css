@@ -1,0 +1,12 @@
+#mainHeader {
+  font-size: 48px;
+  font-weight: bold;
+}
+.supportText {
+  font-size: 22px;
+  font-style: italic;
+  margin-left: 18%;
+}
+#surveyButton {
+  margin-left: 18%;
+}
