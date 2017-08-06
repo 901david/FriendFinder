@@ -21,7 +21,7 @@
     <input type="text" name="" id="photo" class="form-control" required >
     <hr>
     <h3>Question 1</h3>
-    <h4></h4>
+    <h4>You have a desire to consume any and all sweets in sight.</h4>
     <select data-placeholder="" class="chosen-select" id="q1">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -32,7 +32,7 @@
     </select>
 
     <h3>Question 2</h3>
-    <h4></h4>
+    <h4>You would rather take a ride down a mountain  before a day on the beach.</h4>
     <select data-placeholder="" class="chosen-select" id="q2">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -43,7 +43,7 @@
     </select>
 
     <h3>Question 3</h3>
-    <h4></h4>
+    <h4>Life is like a box of chocolates.</h4>
     <select data-placeholder="" class="chosen-select" id="q3">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -54,7 +54,7 @@
     </select>
 
     <h3>Question 4</h3>
-    <h4></h4>
+    <h4>You expect to live past 80.</h4>
     <select data-placeholder="" class="chosen-select" id="q4">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -65,7 +65,7 @@
     </select>
 
     <h3>Question 5</h3>
-    <h4></h4>
+    <h4>You think a good night out is a bottle of liquor and a good Netflix series.</h4>
     <select data-placeholder="" class="chosen-select" id="q5">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -76,7 +76,7 @@
     </select>
 
     <h3>Question 6</h3>
-    <h4></h4>
+    <h4>A clutter desk leads to a cluttered mind.</h4>
     <select data-placeholder="" class="chosen-select" id="q6">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -87,7 +87,7 @@
     </select>
 
     <h3>Question 7</h3>
-    <h4></h4>
+    <h4>Money is the root of all evil.</h4>
     <select data-placeholder="" class="chosen-select" id="q7">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -98,7 +98,7 @@
     </select>
 
     <h3>Question 8</h3>
-    <h4></h4>
+    <h4>Taking risks is a key factor to be successful in life.</h4>
     <select data-placeholder="" class="chosen-select" id="q8">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -109,7 +109,7 @@
     </select>
 
     <h3>Question 9</h3>
-    <h4></h4>
+    <h4>Power Rangers should have never existed.</h4>
     <select data-placeholder="" class="chosen-select" id="q9">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -120,7 +120,7 @@
     </select>
 
     <h3>Question 10</h3>
-    <h4></h4>
+    <h4>Being happy in life is a state of mind.</h4>
     <select data-placeholder="" class="chosen-select" id="q10">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -129,6 +129,38 @@
       <option value="4">4</option>
       <option value="5">5 (Strongly Agree)</option>
     </select>
+    <br/><br/>
+    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><span class="fa fa-check-circle" aria-hidden="true"></span>
+ Submit</button>
+
+		<hr>
+    <br/><br/>
+    <a href="/api/friends">API Friends List</a><span> | </span>
+    <a href="https://github.com/901david/FriendFinder" alt="Github Repo">GitHub Repo</a>
   </div>
 </body>
+<script>
+function NewFriend (nameArg, linkArg, scoresArg) {
+  this.name = nameArg;
+  this.link = linkArg;
+  this.scores = scoresArg;
+};
+$(document).ready(function () {
+  $("#submit").click(function () {
+    let nameArg  = $("#name").val();
+    let linkArg = $("#photo").val();
+    let scoreArg = [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),];
+    let tempFriend = new NewFriend(nameArg, linkArg, scoreArg);
+    var currentURL = window.location.origin;
+    $.ajax({
+      url: currentURL + "/api/friends",
+      method: "POST",
+      data: tempFriend
+    }).done(function(response) {
+      console.log(response);
+
+    });
+  });
+});
+</script>
 </html>
