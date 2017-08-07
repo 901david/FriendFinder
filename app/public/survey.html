@@ -6,8 +6,7 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <!-- <script rel="javascript" type="text/javascript" src="script/app.js"></script> -->
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
   <title>Survey</title>
 </head>
 <body>
@@ -153,35 +152,4 @@
     </div>
   </div>
 </body>
-<script>
-function NewFriend (nameArg, linkArg, scoresArg) {
-  this.name = nameArg;
-  this.link = linkArg;
-  this.scores = scoresArg;
-};
-$(document).ready(function () {
-  $("#submit").click(function () {
-    let nameArg  = $("#name").val().trim();
-    let linkArg = $("#photo").val().trim();
-    let scoreArg = [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),];
-    if ((nameArg === "") || (linkArg === "")) {
-      console.log("Invalid input");
-    }
-    else {
-      let tempFriend = new NewFriend(nameArg, linkArg, scoreArg);
-      var currentURL = window.location.origin;
-      $.ajax({
-        url: currentURL + "/api/friends",
-        method: "POST",
-        data: tempFriend
-      }).done(function(response) {
-        console.log(response);
-        $("#showOverOrNot").removeClass("displayNone").addClass("displayBlock");
-        $("#matchHolder").append("<img src='" + response.photo + "' alt='Your Match'><p>Here is your Match!!</p><p>Name: " + response.name + "'</p>");
-      });
-    }
-
-  });
-});
-</script>
 </html>
