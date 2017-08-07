@@ -25,6 +25,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "app/public/home.html"));
 });
+app.use(express.static(path.join(__dirname, 'app/public/style.css')));
 app.get("/survey", function(req, res) {
 
   res.sendFile(path.join(__dirname, "app/public/survey.html"));
