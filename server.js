@@ -3,10 +3,13 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+// var htmlRouter = require('app/routing/htmlRoutes.js');
+// var apiRouter = require('app/routing/apiRoutes.js');
 
 // Sets up the Express App
 // =============================================================
 var app = express();
+var router = express.Router();
 var PORT = 3000;
 var friendArray = [{name: "Mike", photo: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwicjJXHmcPVAhVChlQKHZIuARYQjRwIBw&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMichael_Jordan&psig=AFQjCNHZuFmWTGXlVXtqW_dCwhN-iFQ40w&ust=1502129218641098", scores: [5, 2, 1, 4, 3, 1, 5, 4, 2, 2]},
 {name: "Crystal", photo: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiVytC7mcPVAhXlzVQKHUKzCC8QjRwIBw&url=http%3A%2F%2Fcatsplat.deviantart.com%2Fart%2FCrystal-Headshot-672214104&psig=AFQjCNHIM264LPcmG7eNL03B8WTnuN653g&ust=1502129190888781", scores: [4, 2, 3, 5, 1, 4, 5, 2, 5, 2]},
@@ -30,15 +33,61 @@ app.get("/survey", function(req, res) {
 app.get("/api/friends", function(req, res) {
   res.json(friendArray);
 });
-
 app.post("/api/friends", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  var newFriend = req.body;
-  console.log(newFriend);
-  friendArray.push(newFriend);
-  // We then display the JSON to the users
-  res.json(newFriend);
+  let yourMatch = [];
+  let newFriend = req.body;
+  let userScores = newFriend.scores;
+  let finalUserCompatScores = [];
+    for (let i = 0; i < friendArray.length; i++) {
+      let tempCompare = friendArray[i].scores;
+      let userCompatScoresArray = [];
+      let userFinalCompatScore;
+      let finalUserTempScore = 0;
+      let startNum = 0;
+      let tempQ;
+      console.log("User Scores: " + userScores);
+      console.log("Compare TO: " + tempCompare);
+      function checkAll () {
+        if (!(startNum > 9)) {
+          console.log("User compat scores array: " + userCompatScoresArray);
+          tempQ = Math.abs(userScores[startNum] - tempCompare[startNum]);
+          console.log("temp Q: " + tempQ);
+          userCompatScoresArray.push(tempQ);
+          startNum++;
+          checkAll();
+        }
+        else {
+          for (let i = 0; i < userCompatScoresArray.length; i++) {
+            finalUserTempScore = finalUserTempScore + parseInt(userCompatScoresArray[i]);
+          }
+          console.log("Final User Temp Score: " + finalUserTempScore);
+          finalUserCompatScores.push(finalUserTempScore);
+          console.log("All users in Array: " + finalUserCompatScores);
+          function indexOfMin(arr) {
+            var min = arr[0];
+            var minIndex = 0;
+            for (var i = 1; i < arr.length; i++) {
+                if (arr[i] < min) {
+                    minIndex = i;
+                    min = arr[i];
+                }
+              }
+            yourMatch = [minIndex, min];
+            console.log("Your match is: " + friendArray[yourMatch[0].name] + " The difference between your scores was: " + yourMatch[1]);
+          };
+          indexOfMin(finalUserCompatScores);
+        }
+      };
+      checkAll();
+    }
+  res.json(friendArray[yourMatch[0]]);
 });
+
+// app.use('/', htmlRouter);
+// app.use('/survey', htmlRouter);
+// app.use('/api/friends', apiRouter);
+// app.post('/api/friends', apiRouter);
+
 
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);

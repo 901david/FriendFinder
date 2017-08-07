@@ -1,12 +1,12 @@
+var express = require('express');
+var router = express.Router();
 
-var express = require("express");
-var app = express();
+router.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "app/public/home.html"));
+});
+router.get("/survey", function(req, res) {
 
-app.get("/", function(req, res) {
-  // res.send("Welcome to the Star Wars Page!")
-  res.sendFile(path.join(__dirname, "../public/home.html"));
+  res.sendFile(path.join(__dirname, "app/public/survey.html"));
 });
-app.get("/survey", function(req, res) {
-  // res.send("Welcome to the Star Wars Page!")
-  res.sendFile(path.join(__dirname, "../public/survey.html"));
-});
+
+module.exports = router;
