@@ -8,6 +8,7 @@ $(document).ready(function () {
     let nameArg  = $("#name").val().trim();
     let linkArg = $("#photo").val().trim();
     let scoreArg = [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),];
+
     if ((nameArg === "") || (linkArg === "") || (!(linkArg.includes("/") && (linkArg.includes("."))))) {
       alert("Invalid input.  Try Again.");
     }
@@ -15,6 +16,18 @@ $(document).ready(function () {
         alert("You didn't fill out all of your scores");
     }
     else {
+      $("#name").val("");
+      $("#photo").val("");
+      $("#q1").val("");
+      $("#q2").val("");
+      $("#q3").val("");
+      $("#q4").val("");
+      $("#q5").val("");
+      $("#q6").val("");
+      $("#q7").val("");
+      $("#q8").val("");
+      $("#q9").val("");
+      $("#q10").val("");
       let tempFriend = new NewFriend(nameArg, linkArg, scoreArg);
       var currentURL = window.location.origin;
       $.ajax({
