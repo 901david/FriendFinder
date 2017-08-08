@@ -33,6 +33,7 @@ body {
   background-color: white;
   opacity:0.9;
   margin-bottom: 5%;
+  margin-top: 3%;
 }
 .displayBlock {
 	display: block;
@@ -54,21 +55,26 @@ body {
 #closeThisThanks {
   position:absolute;
   left:86%;
-  top:82%;
+  top:90%;
   z-index: 9999;
 }
 hr {
   height:5px;
 }
+#matchHolder {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+}
 #modal {
   position:absolute;
-  left:19%;
-  top:52%;
+  left:7%;
+  top:42%;
   background:white;
   border-radius:14px;
   padding:8px;
-  width:450px;
-  height:250px;
+  width:650px;
+  height:550px;
 }
 .jumbotron {
   margin-top: 1%;

@@ -20,6 +20,7 @@ $(document).ready(function () {
         method: "POST",
         data: tempFriend
       }).done(function(response) {
+        $("#matchHolder").empty();
         console.log(response);
         $("#showOverOrNot").removeClass("displayNone").addClass("displayBlock");
         $("#closeThisThanks").removeClass("displayNone").addClass("displayBlock");
