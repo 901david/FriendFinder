@@ -1,3 +1,4 @@
+console.log("I am connected");
 function NewFriend (nameArg, linkArg, scoresArg) {
   this.name = nameArg;
   this.link = linkArg;
@@ -21,9 +22,14 @@ $(document).ready(function () {
       }).done(function(response) {
         console.log(response);
         $("#showOverOrNot").removeClass("displayNone").addClass("displayBlock");
-        $("#matchHolder").append("<img src='" + response.photo + "' alt='Your Match'><p>Here is your Match!!</p><p>Name: " + response.name + "'</p>");
+        $("#closeThisThanks").removeClass("displayNone").addClass("displayBlock");
+        $("#matchHolder").append("<p>Here is your Match!!</p><p>Name: " + response.name + "'</p><img src=" + response.photo + " class='img-responsive'>");
       });
     }
 
+  });
+  $("#closeThisThanks").click(()=>{
+    $("#showOverOrNot").removeClass("displayBlock").addClass("displayNone");
+    $("#closeThisThanks").removeClass("displayBlock").addClass("displayNone");
   });
 });

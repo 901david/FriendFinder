@@ -1,6 +1,9 @@
 #mainHeader {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 48px !important;
+  font-weight: bold !important;
+}
+#showOverOrNot {
+  color:black;
 }
 .supportText {
   font-size: 22px;
@@ -26,11 +29,19 @@
   opacity: 0.25;
   filter: alpha(opacity=50);
 }
+#closeThisThanks {
+  position:absolute;
+  left:86%;
+  top:82%;
+  z-index: 9999;
+}
 #modal {
   position:absolute;
   left:39%;
   top:19%;
-  background:rgba(0,0,0,0.2);
+  background:white;
   border-radius:14px;
   padding:8px;
+  width:450px;
+  height:250px;
 }
