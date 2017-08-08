@@ -23,7 +23,7 @@ $(document).ready(function () {
         console.log(response);
         $("#showOverOrNot").removeClass("displayNone").addClass("displayBlock");
         $("#closeThisThanks").removeClass("displayNone").addClass("displayBlock");
-        $("#matchHolder").append("<p>Here is your Match!!</p><p>Name: " + response.name + "'</p><img src=" + response.photo + " class='img-responsive'>");
+        $("#matchHolder").append("<p>Here is your Match!!</p><p>Name: " + response.name + "</p><img src=" + response.photo + " class='img-responsive'>");
       });
     }
 
