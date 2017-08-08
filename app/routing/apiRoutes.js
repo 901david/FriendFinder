@@ -55,6 +55,7 @@ module.exports = function(app) {
         };
         checkAll();
       }
+      friendsData.push(newFriend);
     res.json(friendsData[yourMatch[0]]);
   });
 
