@@ -13,7 +13,7 @@ $(document).ready(function () {
       alert("Invalid input.  Try Again.");
     }
     else if (($("#q1").val() === "") || ($("#q2").val() === "") || ($("#q3").val() === "") || ($("#q4").val() === "") || ($("#q5").val() === "") || ($("#q6").val() === "") || ($("#q7").val() === "") || ($("#q8").val() === "") || ($("#q9").val() === "") || ($("#q10").val() === "")) {
-        alert("You didn't fill out all of your scores");
+      alert("You didn't fill out all of your scores");
     }
     else {
       $("#name").val("");

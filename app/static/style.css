@@ -36,10 +36,10 @@ body {
   margin-top: 3%;
 }
 .displayBlock {
-	display: block;
+  display: block;
 }
 .displayNone {
-	display: none;
+  display: none;
 }
 
 #overlay {
