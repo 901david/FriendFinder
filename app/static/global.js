@@ -4,6 +4,8 @@ function NewFriend (nameArg, linkArg, scoresArg) {
   this.scores = scoresArg;
 };
 $(document).ready(function () {
+
+
   $("#submit").click(function () {
     let nameArg  = $("#name").val().trim();
     let linkArg = $("#photo").val().trim();
