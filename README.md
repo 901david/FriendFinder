@@ -1,4 +1,4 @@
-Visit Application: http://attachmore.com/761335234
+Visit Application: https://friend-finder-fun.herokuapp.com/
 
 # FriendFinder
 
